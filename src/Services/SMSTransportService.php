@@ -2,11 +2,11 @@
 
 namespace Ferdous\OtpValidator\Services;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use Exception;
-use GuzzleHttp\Exception\RequestException;
 use Ferdous\OtpValidator\Exceptions\InvalidMethodException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Log;
 
 class SMSTransportService implements TransportServiceInterface
@@ -110,7 +110,7 @@ class SMSTransportService implements TransportServiceInterface
         }
 
         // wrapper
-        $wrapper = $config['wrapper'] ?? NULL;
+        $wrapper = $config['wrapper'] ?? null;
         $wrapperParams = $config['wrapperParams'] ?? [];
         $send_vars = [];
 
@@ -134,7 +134,7 @@ class SMSTransportService implements TransportServiceInterface
                     $request,
                     [
                         'query' => $params,
-                        'headers' => $headers
+                        'headers' => $headers,
                     ]
                 );
             } elseif ($config['method'] == "POST") {
@@ -144,7 +144,7 @@ class SMSTransportService implements TransportServiceInterface
                         $request,
                         [
                             'json' => $payload,
-                            'headers' => $headers
+                            'headers' => $headers,
                         ]
                     );
                 } else {
@@ -152,7 +152,7 @@ class SMSTransportService implements TransportServiceInterface
                         $request,
                         [
                             'query' => $params,
-                            'headers' => $headers
+                            'headers' => $headers,
                         ]
                     );
                 }
@@ -181,7 +181,6 @@ class SMSTransportService implements TransportServiceInterface
             }
         }
         return $this;
-
 
     }
 
