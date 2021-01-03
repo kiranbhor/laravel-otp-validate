@@ -14,7 +14,7 @@ class CreateOtpsTable extends Migration
     public function up()
     {
         Schema::create(config('otp.table-name'), function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('client_req_id');
             $table->string('number')->nullable();
             $table->string('email')->nullable();
@@ -22,7 +22,7 @@ class CreateOtpsTable extends Migration
             $table->string('otp');
             $table->string('uuid');
             $table->tinyInteger('retry');
-            $table->enum('status',['new','used', 'expired']);
+            $table->enum('status', ['new', 'used', 'expired']);
             $table->timestamps();
             $table->index(['client_req_id', 'uuid', 'status', 'type']);
         });
